@@ -1,0 +1,128 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.2&nbsp;Middle Tier Highlights</title><link rel="stylesheet" href="css/stylesheet.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.0"><link rel="home" href="index.html" title="A Guide to the GreenPages Sample"><link rel="up" href="ch03.html" title="3.&nbsp;GreenPages Highlights"><link rel="prev" href="ch03.html" title="3.&nbsp;GreenPages Highlights"><link rel="next" href="ch03s03.html" title="3.3&nbsp;Testing Highlights"><!--Begin Google Analytics code--><script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script><script type="text/javascript">
+			var pageTracker = _gat._getTracker("UA-2728886-3");
+			pageTracker._setDomainName("none");
+			pageTracker._setAllowLinker(true);
+			pageTracker._trackPageview();
+		</script><!--End Google Analytics code--></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.2&nbsp;Middle Tier Highlights</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a>&nbsp;</td><th width="60%" align="center">3.&nbsp;GreenPages Highlights</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="highlights.middletier"></a>3.2&nbsp;Middle Tier Highlights</h2></div></div></div><p>
+		In the middle tier of GreenPages, the DataSource bundle <code class="literal">greenpages.db</code> constructs a DataSource and
+		publishes it in the service registry and the JPA bundle <code class="literal">greenpages.jpa</code> uses the datasource to define a JPA entity manager
+		which provides an object-relational	mapping between directory listings and the database.
+		The JPA bundle also uses declarative transaction management to ensure its persistence operations are performed inside transactions.
+	</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e960"></a>DataSource</h3></div></div></div><p>
+			The file <code class="filename">src/main/resources/META-INF/spring/module-context.xml</code> in the <code class="literal">greenpages.db</code> project
+			declares the Spring <span class="emphasis"><em>p-namespace</em></span>:
+</p><pre class="programlisting">&lt;<span class="hl-tag">beans</span> <span class="hl-attribute">xmlns</span>=<span class="hl-value">"http://www.springframework.org/schema/beans"</span>
+       <span class="hl-attribute">xmlns:xsi</span>=<span class="hl-value">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="hl-attribute">xsi:schemaLocation</span>=<span class="hl-value">"http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"</span>
+       <span class="hl-attribute">xmlns:p</span>=<span class="hl-value">"http://www.springframework.org/schema/p"</span>&gt;
+</pre><p>
+			which is then used to define properties of a datasource bean:
+</p><pre class="programlisting">&lt;<span class="hl-tag">bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"dataSource"</span> <span class="hl-attribute">class</span>=<span class="hl-value">"org.apache.commons.dbcp.BasicDataSource"</span> 
+      <span class="hl-attribute">p:driverClassName</span>=<span class="hl-value">"org.h2.Driver"</span> <span class="hl-attribute">p:url</span>=<span class="hl-value">"jdbc:h2:~/greenpages-db/greenpages"</span>
+      <span class="hl-attribute">p:username</span>=<span class="hl-value">"greenpages"</span> <span class="hl-attribute">p:password</span>=<span class="hl-value">"pass"</span>
+      <span class="hl-attribute">init-method</span>=<span class="hl-value">"createDataSource"</span> <span class="hl-attribute">destroy-method</span>=<span class="hl-value">"close"</span>/&gt;
+</pre><p>
+		</p><p>
+			The file <code class="filename">src/main/resources/META-INF/spring/osgi-context.xml</code> publishes the datasource bean as a service in the
+			service registry using Spring DM:
+</p><pre class="programlisting">&lt;<span class="hl-tag">osgi:service</span> <span class="hl-attribute">ref</span>=<span class="hl-value">"dataSource"</span> <span class="hl-attribute">interface</span>=<span class="hl-value">"javax.sql.DataSource"</span>/&gt;
+</pre><p>
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e988"></a>EntityManager</h3></div></div></div><p>
+			The <code class="classname">greenpages.jpa.JpaDirectory</code> class in the folder <code class="filename">src/main/java</code> of the
+			<code class="literal">greenpages.jpa</code> project uses the <code class="literal">@Repository</code> annotation to make it eligible for Spring DataAccessException translation
+			(which abstracts implementation-specific persistence exceptions to protect the application from details of the persistence implementation):
+</p><pre class="programlisting">@Repository
+<span class="hl-keyword">final</span> <span class="hl-keyword">class</span> JpaDirectory <span class="hl-keyword">implements</span> Directory {
+</pre><p>
+			and also declares an entity manager which will be injected by Spring:
+</p><pre class="programlisting">@PersistenceContext
+<span class="hl-keyword">private</span> EntityManager em;
+</pre><p>
+		</p><p>
+			The file <code class="filename">src/main/resources/META-INF/spring/module-context.xml</code> in the <code class="literal">greenpages.jpa</code> project
+			declares an entity manager factory based on EclipseLink JPA:
+</p><pre class="programlisting">&lt;<span class="hl-tag">bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"entityManagerFactory"</span>
+      <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"</span> 
+      <span class="hl-attribute">p:dataSource-ref</span>=<span class="hl-value">"dataSource"</span>&gt;
+      &lt;<span class="hl-tag">property</span> <span class="hl-attribute">name</span>=<span class="hl-value">"jpaVendorAdapter"</span>&gt;
+            &lt;<span class="hl-tag">bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"jpaVendorAdapter"</span>
+                  <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter"</span>
+                  <span class="hl-attribute">p:databasePlatform</span>=<span class="hl-value">"org.eclipse.persistence.platform.database.HSQLPlatform"</span>
+                  <span class="hl-attribute">p:showSql</span>=<span class="hl-value">"true"</span>/&gt;
+      &lt;<span class="hl-tag">/property</span>&gt;
+&lt;<span class="hl-tag">/bean</span>&gt;
+</pre><p>
+		</p><p>
+			The same file enables scanning for annotations, including <code class="literal">@PersistenceContext</code>:
+</p><pre class="programlisting">&lt;<span class="hl-tag">context:annotation-config</span>/&gt;
+</pre><p>
+			enables load-time weaving, which is needed by the entity manager factory:
+</p><pre class="programlisting">&lt;<span class="hl-tag">context:load-time-weaver</span> <span class="hl-attribute">aspectj-weaving</span>=<span class="hl-value">"on"</span>/&gt;
+</pre><p>
+			and specifies a bean post processor to perform exception translation for <code class="literal">@Repository</code> classes:
+</p><pre class="programlisting">&lt;<span class="hl-tag">bean</span> <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"</span>/&gt;
+</pre><p>
+		</p><p>
+			The file <code class="filename">src/main/resources/META-INF/persistence.xml</code> defines a persistence unit for a <code class="classname">JpaListing</code>
+			directory listing class.
+</p><pre class="programlisting">&lt;<span class="hl-tag">persistence</span> <span class="hl-attribute">xmlns</span>=<span class="hl-value">"http://java.sun.com/xml/ns/persistence"</span>
+             <span class="hl-attribute">xmlns:xsi</span>=<span class="hl-value">"http://www.w3.org/2001/XMLSchema-instance"</span>
+             <span class="hl-attribute">xsi:schemaLocation</span>=<span class="hl-value">"http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"</span>
+             <span class="hl-attribute">version</span>=<span class="hl-value">"1.0"</span>&gt;
+
+      &lt;<span class="hl-tag">persistence-unit</span> <span class="hl-attribute">name</span>=<span class="hl-value">"GreenPages"</span> <span class="hl-attribute">transaction-type</span>=<span class="hl-value">"RESOURCE_LOCAL"</span>&gt;
+            &lt;<span class="hl-tag">class</span>&gt;greenpages.jpa.JpaListing&lt;<span class="hl-tag">/class</span>&gt;
+      &lt;<span class="hl-tag">/persistence-unit</span>&gt;
+
+&lt;<span class="hl-tag">/persistence</span>&gt;
+</pre><p>
+		</p><p>
+			The file <code class="filename">src/main/resources/META-INF/orm.xml</code> defines an entity mapping for the <code class="classname">JpaListing</code> class.
+</p><pre class="programlisting">&lt;<span class="hl-tag">entity-mappings</span> <span class="hl-attribute">xmlns</span>=<span class="hl-value">"http://java.sun.com/xml/ns/persistence/orm"</span>
+                 <span class="hl-attribute">xmlns:xsi</span>=<span class="hl-value">"http://www.w3.org/2001/XMLSchema-instance"</span>
+                 <span class="hl-attribute">xsi:schemaLocation</span>=<span class="hl-value">"http://java.sun.com/xml/ns/persistence/orm
+                 http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"</span>
+                 <span class="hl-attribute">version</span>=<span class="hl-value">"1.0"</span>&gt;
+      &lt;<span class="hl-tag">package</span>&gt;greenpages.jpa&lt;<span class="hl-tag">/package</span>&gt;
+      &lt;<span class="hl-tag">entity</span> <span class="hl-attribute">class</span>=<span class="hl-value">"greenpages.jpa.JpaListing"</span> <span class="hl-attribute">name</span>=<span class="hl-value">"Listing"</span>&gt;
+            &lt;<span class="hl-tag">table</span> <span class="hl-attribute">name</span>=<span class="hl-value">"LISTING"</span>/&gt;
+            &lt;<span class="hl-tag">attributes</span>&gt;
+                  &lt;<span class="hl-tag">id</span> <span class="hl-attribute">name</span>=<span class="hl-value">"listingNumber"</span>&gt;
+                        &lt;<span class="hl-tag">column</span> <span class="hl-attribute">name</span>=<span class="hl-value">"LISTING_NUMBER"</span>/&gt;
+                        &lt;<span class="hl-tag">generated-value</span> <span class="hl-attribute">strategy</span>=<span class="hl-value">"TABLE"</span>/&gt;
+                  &lt;<span class="hl-tag">/id</span>&gt;
+                  &lt;<span class="hl-tag">basic</span> <span class="hl-attribute">name</span>=<span class="hl-value">"firstName"</span>&gt;
+                        &lt;<span class="hl-tag">column</span> <span class="hl-attribute">name</span>=<span class="hl-value">"FIRST_NAME"</span>/&gt;
+                  &lt;<span class="hl-tag">/basic</span>&gt;
+                  &#8230;
+            &lt;<span class="hl-tag">/attributes</span>&gt;
+      &lt;<span class="hl-tag">/entity</span>&gt;
+&lt;<span class="hl-tag">/entity-mappings</span>&gt;
+</pre><p>
+		</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1061"></a>Transaction Management</h3></div></div></div><p>
+			The <code class="classname">greenpages.jpa.JpaDirectory</code> class in the folder <code class="filename">src/main/java</code> of the
+			<code class="literal">greenpages.jpa</code> project uses the <code class="literal">@Transactional</code> annotation to provide transaction demarcation
+			(beginning and committing a transaction around each method in this case):
+</p><pre class="programlisting">@Transactional
+&#8230;
+<span class="hl-keyword">final</span> <span class="hl-keyword">class</span> JpaDirectory <span class="hl-keyword">implements</span> Directory {
+</pre><p>
+		</p><p>
+			The file <code class="filename">src/main/resources/META-INF/spring/module-context.xml</code> enables AspectJ weaving for transaction demarcation:
+</p><pre class="programlisting">&lt;<span class="hl-tag">tx:annotation-driven</span> <span class="hl-attribute">mode</span>=<span class="hl-value">"aspectj"</span>/&gt;
+</pre><p>
+			and specifies that the Spring <code class="classname">JpaTransactionManager</code> should be used and associated with the entity manager factory:
+</p><pre class="programlisting">&lt;<span class="hl-tag">bean</span> <span class="hl-attribute">id</span>=<span class="hl-value">"transactionManager"</span> <span class="hl-attribute">class</span>=<span class="hl-value">"org.springframework.orm.jpa.JpaTransactionManager"</span>
+      <span class="hl-attribute">p:entityManagerFactory-ref</span>=<span class="hl-value">"entityManagerFactory"</span>/&gt;
+</pre><p>
+		</p></div></div><!--Begin LoopFuse code--><script src="http://loopfuse.net/webrecorder/js/listen.js" type="text/javascript"></script><script type="text/javascript">
+			_lf_cid = "LF_48be82fa";
+			_lf_remora();
+		</script><!--End LoopFuse code--><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;GreenPages Highlights&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;3.3&nbsp;Testing Highlights</td></tr></table></div></body></html>
