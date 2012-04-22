@@ -5,6 +5,6 @@ Bundle-SymbolicName: greenpages
 Bundle-Vendor: SpringSource Inc.
 Bundle-Version: 2.4.0
 Import-Template: 
- org.springframework.*;version="[3.0, 3.1)"
+ org.springframework.*;version="[3.0, 3.2)"
 Excluded-Exports: 
  greenpages.internal
