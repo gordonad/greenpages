@@ -53,7 +53,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-par-plugin</artifactId>
-				<version>1.0.0.RELEASE</version>
 				<configuration>
 					<applicationSymbolicName>greenpages</applicationSymbolicName>
 				</configuration>
