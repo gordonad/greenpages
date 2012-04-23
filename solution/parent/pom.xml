@@ -43,7 +43,7 @@
         <maven.versions.plugin>1.3.1</maven.versions.plugin>
         <maven.war.plugin>2.2</maven.war.plugin>
 
-        <persistence.version>1.0.0</persistence.version>
+        <persistence.version>2.0.0</persistence.version>
         <servlet.version>3.0.0.v201103241009</servlet.version>
         <!--<spring.version>3.1.1.RELEASE</spring.version>-->
         <spring.version>3.0.7.RELEASE</spring.version>
@@ -57,7 +57,6 @@
                 <artifactId>org.springframework.spring-library</artifactId>
                 <type>libd</type>
                 <version>${spring.version}</version>
-                <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -75,19 +74,16 @@
                 <groupId>javax.persistence</groupId>
                 <artifactId>com.springsource.javax.persistence</artifactId>
                 <version>${persistence.version}</version>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>com.springsource.org.eclipse.persistence</artifactId>
                 <version>${persistence.version}</version>
-                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>com.springsource.org.eclipse.persistence.jpa</artifactId>
                 <version>${persistence.version}</version>
-                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>
@@ -213,7 +209,6 @@
                         <execution>
                             <id>bundlor</id>
                             <goals>
-                                <!--<goal>transform</goal>-->
                                 <goal>bundlor</goal>
                             </goals>
                             <phase>package</phase>
@@ -246,6 +241,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.plugin}</version>
                     <configuration>
+                        <skipTests>true</skipTests>
                         <includes>
                             <include>**/*Tests.java</include>
                         </includes>
@@ -284,6 +280,18 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>${maven.clean.plugin}</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>${project.basedir}</directory>
+                                <includes>
+                                    <include>target</include>
+                                    <include>surefire*</include>
+                                </includes>
+                                <followSymlinks>false</followSymlinks>
+                            </fileset>
+                        </filesets>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -310,14 +318,21 @@
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${maven.site.plugin}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${maven.versions.plugin}</version>
+                    <configuration>
+                        <allowMajorUpdates>false</allowMajorUpdates>
+                        <allowIncrementalUpdates>false</allowIncrementalUpdates>
+                        <detail>true</detail>
+                        <generateBackupPoms>true</generateBackupPoms>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
-            <!--<plugin>-->
-            <!--<groupId>com.springsource.bundlor</groupId>-->
-            <!--<artifactId>com.springsource.bundlor.maven</artifactId>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -333,12 +348,15 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>${maven.versions.plugin}</version>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-deploy-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<file>${project.build.outputDirectory}/*.par</file>-->
+                    <!--<url>file:///${env.VSW_HOME}/repository/ext</url>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
-
-    <prerequisites>
-        <maven>3.0.3</maven>
-    </prerequisites>
 </project>
