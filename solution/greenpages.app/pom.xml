@@ -14,10 +14,9 @@
 	</parent>
 
 	<artifactId>greenpages.app-solution</artifactId>
-
-	<name>greenpages.app</name>
-
 	<packaging>jar</packaging>
+
+	<name>Greenpages App (jar)</name>
 
 	<dependencies>
 		<dependency>
@@ -30,4 +29,13 @@
 			<artifactId>com.springsource.org.junit</artifactId>
 		</dependency>
 	</dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.springsource.bundlor</groupId>
+                <artifactId>com.springsource.bundlor.maven</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

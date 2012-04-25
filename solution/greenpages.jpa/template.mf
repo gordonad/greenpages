@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GreenPages JPA
 Bundle-SymbolicName: greenpages.jpa
-Bundle-Vendor: SpringSource Inc.
+Bundle-Vendor: from.template.mf
 Bundle-Version: 2.4.1
 Import-Template: 
  org.springframework.*;version="[3.0, 3.2)",

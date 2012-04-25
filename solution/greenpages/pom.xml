@@ -2,8 +2,9 @@
 <project
 		xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		  http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.eclipse.virgo</groupId>
 		<artifactId>greenpages.parent-solution</artifactId>
@@ -11,14 +12,13 @@
 		<relativePath>../parent</relativePath>
 	</parent>
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eclipse.virgo</groupId>
 	<artifactId>greenpages-solution</artifactId>
-	<name>GreenPages PAR</name>
-	<description>GreenPages PAR</description>
 	<packaging>par</packaging>
 
-	<dependencies>
+	<name>GreenPages Solution (par)</name>
+    <description>GreenPages PAR</description>
+
+    <dependencies>
 		<dependency>
 			<groupId>org.eclipse.virgo</groupId>
 			<artifactId>greenpages.app-solution</artifactId>

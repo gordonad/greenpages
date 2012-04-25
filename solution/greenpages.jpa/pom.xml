@@ -12,10 +12,9 @@
 	</parent>
 
 	<artifactId>greenpages.jpa-solution</artifactId>
-
-	<name>greenpages.jpa</name>
-
 	<packaging>jar</packaging>
+
+	<name>Greenpages JPA (jar)</name>
 
 	<dependencies>
 		<dependency>
@@ -76,4 +75,12 @@
 		</dependency>
 	</dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.springsource.bundlor</groupId>
+                <artifactId>com.springsource.bundlor.maven</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

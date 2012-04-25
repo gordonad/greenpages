@@ -10,7 +10,7 @@
     <artifactId>greenpages-top-level-solution</artifactId>
     <version>2.4.1.RELEASE</version>
 
-    <name>GreenPages App Build</name>
+    <name>GreenPages App Build (pom)</name>
 
     <packaging>pom</packaging>
 

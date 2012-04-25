@@ -9,7 +9,7 @@
     <artifactId>greenpages.parent-solution</artifactId>
     <version>2.4.1.RELEASE</version>
 
-    <name>greenpages.parent</name>
+    <name>Greenpages Parent Solution (pom)</name>
 
     <packaging>pom</packaging>
 
@@ -27,6 +27,7 @@
         <maven.compiler.plugin>2.3.2</maven.compiler.plugin>
         <maven.dependency.plugin>2.4</maven.dependency.plugin>
         <maven.deploy.plugin>2.7</maven.deploy.plugin>
+        <!--<maven.felix.plugin>2.3.7</maven.felix.plugin>-->
         <maven.help.plugin>2.1.1</maven.help.plugin>
         <maven.install.plugin>2.3.1</maven.install.plugin>
         <maven.jar.plugin>2.4</maven.jar.plugin>
@@ -43,20 +44,29 @@
         <maven.versions.plugin>1.3.1</maven.versions.plugin>
         <maven.war.plugin>2.2</maven.war.plugin>
 
-        <persistence.version>2.0.0</persistence.version>
+        <pax.runner.version>1.7.6</pax.runner.version>
+        <persistence.version>1.0.0</persistence.version>
         <servlet.version>3.0.0.v201103241009</servlet.version>
         <!--<spring.version>3.1.1.RELEASE</spring.version>-->
         <spring.version>3.0.7.RELEASE</spring.version>
+        <spring.osgi.version>1.2.1</spring.osgi.version>
+        <validation.version>1.0.0.GA</validation.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.ops4j.pax.runner</groupId>
+                <artifactId>pax-runner</artifactId>
+                <version>${pax.runner.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>org.springframework.spring-library</artifactId>
                 <type>libd</type>
                 <version>${spring.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -68,22 +78,29 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>com.springsource.org.h2</artifactId>
                 <version>${h2.version}</version>
-                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>javax.persistence</groupId>
                 <artifactId>com.springsource.javax.persistence</artifactId>
                 <version>${persistence.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>com.springsource.org.eclipse.persistence</artifactId>
                 <version>${persistence.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>com.springsource.org.eclipse.persistence.jpa</artifactId>
                 <version>${persistence.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>com.springsource.javax.validation</artifactId>
+                <version>${validation.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>
@@ -127,6 +144,37 @@
                 <artifactId>javax.servlet</artifactId>
                 <version>${servlet.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <!-- Spring dm OSGi -->
+            <dependency>
+                <groupId>org.springframework.osgi</groupId>
+                <artifactId>spring-osgi-extender</artifactId>
+                <version>${spring.osgi.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.osgi</groupId>
+                <artifactId>spring-osgi-core</artifactId>
+                <version>${spring.osgi.version}</version>
+                <scope>provided</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>org.springframework.aop</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>org.springframework.beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>org.springframework.core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>org.springframework.context</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -173,6 +221,16 @@
             <name>SpringSource Enterprise Bundle Repository - Snapshot Library Releases</name>
             <url>http://repository.springsource.com/maven/libraries/snapshot</url>
         </repository>
+        <repository>
+            <id>eclipse.p2</id>
+            <name>Eclipse Repo</name>
+            <url>http://archive.eclipse.org/rt/eclipselink/maven.repo/</url>
+        </repository>
+        <repository>
+            <id>EclipseLink Repo</id>
+            <url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
+            <name>EclipseLink Repo</name>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -202,6 +260,7 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <!-- Attached to process-classes so it happens before package -->
                     <groupId>com.springsource.bundlor</groupId>
                     <artifactId>com.springsource.bundlor.maven</artifactId>
                     <version>${maven.bundlor.plugin}</version>
@@ -211,7 +270,7 @@
                             <goals>
                                 <goal>bundlor</goal>
                             </goals>
-                            <phase>package</phase>
+                            <phase>process-classes</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -231,7 +290,7 @@
                     <configuration>
                         <archive>
                             <manifestFile>
-                                src/main/resources/META-INF/MANIFEST.MF
+                                ${project.build.outputDirectory}/META-INF/MANIFEST.MF
                             </manifestFile>
                         </archive>
                     </configuration>
@@ -267,9 +326,17 @@
                     <version>${maven.par.plugin}</version>
                 </plugin>
                 <plugin>
+                    <!-- war plugin MUST reference the Bundlor generated MANIFEST.MF
+                         AND ignore the temporary src/main/webapp/META-INF/MANIFEST.MF -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${maven.war.plugin}</version>
+                    <configuration>
+                        <archive>
+                            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                        </archive>
+                        <packagingExcludes>WEB-INF/classes/META-INF/MANIFEST.MF,WEB-INF/lib/**</packagingExcludes>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -329,6 +396,14 @@
                         <generateBackupPoms>true</generateBackupPoms>
                     </configuration>
                 </plugin>
+                <!--<plugin>-->
+                <!--<groupId>net.flybyte.virgo</groupId>-->
+                <!--<artifactId>virgo-maven-plugin</artifactId>-->
+                <!--<version>1.0.1-SNAPSHOT</version>-->
+                <!--<configuration>-->
+                <!--<virgoRoot>${env.VWS_HOME}</virgoRoot>-->
+                <!--</configuration>-->
+                <!--</plugin>-->
             </plugins>
         </pluginManagement>
 
@@ -349,14 +424,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-deploy-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<file>${project.build.outputDirectory}/*.par</file>-->
-                    <!--<url>file:///${env.VSW_HOME}/repository/ext</url>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 </project>

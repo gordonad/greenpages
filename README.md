@@ -23,14 +23,43 @@ TODO
 - Provide DB connection for MySQL/MariaDB
 - JPA 2.0.0
 - EclipseLink 2.0.0(?)
+- Maven Deploy to $VWS_HOME/pickup directory
 
 
 Project Layout
 --------------
+parent - Top level of Maven project
+web - Web Application
+jpa - Persistence Bundle
+db - Database Configuration
+app - application services
+greenpages - PAR creation
+
+
+### Structure:
+
+# greenpages-app-build (pom)
+Modules
+  -> parent (pom)
+  -> greenpages.db (jar)
+  -> greenpages.app (jar)
+  -> greenpages.jpa (jar)
+  -> greenpages.web (war)
+  -> greenpages (par)
+
+# Unidirectional children reference parent project, no modules
+greenpages
+  -> greenpages-parent
+  -> greenpages-web
+  -> greenpages-jpa
+  -> greenpages-db
+  -> greenpages-app
+
+
 
 
 Virgo Version Configuration
----------------------
+---------------------------
 - Virgo Dependencies
   - Created Spring 3.0.7 libd file
   - Added instrument jar to libd file (not sure if necessary)
@@ -75,11 +104,25 @@ Installation
 
 ### From solution:
 
-Execute:
+## Execute:
 
 `mvn clean package`
 
+
+## Deploy:
 Copy the solution/target/greenpages*.par to $VWS_HOME/pickup directory
+Copy the solution/target/par-provided/*.jar to $VWS_HOME/repository/usr directory
+
+
+
+Manifest Creation
+-----------------
+
+## Bundlor
+- Spring's Bundlor uses the template.mf file to create the manifest in target/classes/META-INF/MANIFEST.MF
+- IMPORTANT - The Maven war configuration MUST reference the generated MANIFEST and ignore the one in src/main/webapp/WEB-INF/
+
+
 
 
 

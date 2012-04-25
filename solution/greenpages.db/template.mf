@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GreenPages DataSource
 Bundle-SymbolicName: greenpages.db
-Bundle-Vendor: SpringSource Inc.
+Bundle-Vendor: from.template.mf
 Bundle-Version: 2.4.1
 Import-Package: 
  org.h2;version="[1.0.71, 1.0.71]"

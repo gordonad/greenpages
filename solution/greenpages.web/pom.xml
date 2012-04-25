@@ -13,10 +13,9 @@
     </parent>
 
     <artifactId>greenpages.web-solution</artifactId>
-
-    <name>greenpages.web</name>
-
     <packaging>war</packaging>
+
+    <name>Greenpages Web (war)</name>
 
     <dependencies>
         <dependency>
@@ -28,12 +27,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.spring-library</artifactId>
             <type>libd</type>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>com.springsource.freemarker</artifactId>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -89,11 +87,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <packagingExcludes>WEB-INF/lib/**</packagingExcludes>
-                </configuration>
+                    <configuration>
+                        <archive>
+                            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                        </archive>
+                        <packagingExcludes>WEB-INF/classes/META-INF/MANIFEST.MF,WEB-INF/lib/**</packagingExcludes>
+                        <!--<packagingExcludes>WEB-INF/lib/**</packagingExcludes>-->
+                    </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.springsource.bundlor</groupId>
+                <artifactId>com.springsource.bundlor.maven</artifactId>
             </plugin>
         </plugins>
     </build>
-
 </project>
