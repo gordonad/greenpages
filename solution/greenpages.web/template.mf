@@ -2,7 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GreenPages Web
 Bundle-SymbolicName: greenpages.web
-Bundle-Vendor: from.template.mf
+Bundle-Vendor: SpringSource Inc.
+Bundle-Description: Generated.From.Template
 Bundle-Version: 2.4.1
 Bundle-ClassPath: .,WEB-INF/classes
 Web-ContextPath: greenpages

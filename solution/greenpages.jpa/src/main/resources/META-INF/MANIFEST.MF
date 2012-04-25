@@ -2,7 +2,8 @@ Manifest-Version: 1.0
 Import-Bundle: com.springsource.org.eclipse.persistence;version="[1.0.
  0, 2.0.0]",com.springsource.org.eclipse.persistence.jpa;version="[1.0
  .0, 2.0.0]"
-Bundle-Vendor: static.manifest
+Bundle-Vendor: SpringSource Inc.
+Bundle-Description: Static.Manifest
 Bundle-Version: 2.4.1
 Tool: Bundlor 1.0.0.RELEASE
 Bundle-Name: GreenPages JPA
