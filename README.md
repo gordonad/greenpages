@@ -10,6 +10,12 @@ Eclipse Virgo GreenPages Demo
 
 Changes
 -------
+- 26-Apr-12
+  - Properties externalized for database connection - see _solution/etc/properties_ directory
+  - Created plan file for deployment - see _solution/etc/plan_ directory
+  - Refactored directory _greenpages.app_ to _greenpages.services_
+
+
 - greenpages-parent-solution pom.xml
 - Spring version 3.0.7 and surefire plugin to use corresponding spring instrument version
 - Dependencies versions specified in dependencyManagement section
@@ -37,7 +43,7 @@ Project Layout
 - web - Web Application
 - jpa - Persistence Bundle
 - db - Database Configuration
-- app - application services
+- services - application services
 - greenpages - PAR creation
 
 
@@ -45,7 +51,7 @@ Project Layout
 - greenpages-app-build _(pom w/ modules)_
   - -> parent _(pom)_
   - -> greenpages.db _(jar)_
-  - -> greenpages.app _(jar)_
+  - -> greenpages.services _(jar)_
   - -> greenpages.jpa _(jar)_
   - -> greenpages.web _(war)_
   - -> greenpages _(par)_
@@ -56,7 +62,7 @@ Project Layout
   - -> greenpages-web
   - -> greenpages-jpa
   - -> greenpages-db
-  - -> greenpages-app
+  - -> greenpages-services
 
 
 Virgo Version Configuration
@@ -103,8 +109,13 @@ Installation
 
 $ _mvn clean package_
 
-
 ### Deploy:
+1. Copy _services_, _db_, _jpa_ and _web_ jar/war files (declared in the plan file) to _$VWS\_HOME/repository/usr_ directory
+2. Copy _*.property_ files from _etc/properties_ directory to _$VWS\_HOME/repository/usr_ directory
+3. Copy _etc/plans/greenpages.solution.plan_ to _$VWS\_HOME/pickup_ directory
+
+
+### Deploy (old):
 1. Copy the _solution/target/greenpages*.par_ to _$VWS\_HOME/pickup_ directory
 2. Copy the _solution/target/par-provided/*.jar_ to _$VWS\_HOME/repository/usr_ directory
 

@@ -4,7 +4,7 @@ Bundle-Vendor: SpringSource Inc.
 Bundle-Description: Static.Manifest
 Bundle-Version: 2.4.1
 Tool: Bundlor 1.0.0.RELEASE
-Bundle-Name: GreenPages Test
+Bundle-Name: GreenPages Services
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: greenpages.test
+Bundle-SymbolicName: greenpages.services
 

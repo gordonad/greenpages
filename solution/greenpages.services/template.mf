@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: GreenPages Service
+Bundle-Name: GreenPages Services
 Bundle-SymbolicName: greenpages
 Bundle-Vendor: SpringSource Inc.
 Bundle-Description: Generated.From.Template

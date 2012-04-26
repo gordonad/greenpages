@@ -13,7 +13,7 @@
     <!-- Database properties file (minus file extension) to be deployed -->
     <artifact type="configuration" name="greenpages.db.config"/>
 
-    <artifact type="bundle" name="greenpages.app" version="[2.4, 2.5)"/>
+    <artifact type="bundle" name="greenpages" version="[2.4, 2.5)"/>
     <artifact type="bundle" name="greenpages.db" version="[2.4, 2.5)"/>
     <artifact type="bundle" name="greenpages.jpa" version="[2.4, 2.5)"/>
     <artifact type="bundle" name="greenpages.web" version="[2.4, 2.5)">

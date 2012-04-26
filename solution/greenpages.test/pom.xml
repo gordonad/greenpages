@@ -38,7 +38,7 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.virgo</groupId>
-            <artifactId>greenpages.app-solution</artifactId>
+            <artifactId>greenpages.services-solution</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
