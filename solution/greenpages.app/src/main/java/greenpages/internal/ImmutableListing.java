@@ -13,38 +13,41 @@ package greenpages.internal;
 
 import greenpages.Listing;
 
-final class ImmutableListing implements Listing {
+public final class ImmutableListing implements Listing {
 
-	private final Integer listingNumber;
-	
-	private final String  firstName;
-	
-	private final String lastName;
-	
-	private final String  emailAddress;
-	
-	public ImmutableListing(int listingNumber, String firstName,String lastName, String emailAddress) {
-		
-		this.listingNumber = listingNumber;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailAddress = emailAddress;
-	}
-	
-	public Integer getListingNumber() {
-		return listingNumber;
-	}
-	
-	public String getFirstName() {
-		return firstName;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public String getEmailAddress() {
-		return emailAddress;
-	}
-	
+    private final Integer listingNumber;
+
+    private final String firstName;
+
+    private final String lastName;
+
+    private final String emailAddress;
+
+    public ImmutableListing(int listingNumber, String firstName, String lastName, String emailAddress) {
+
+        this.listingNumber = listingNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+    }
+
+    @Override
+    public Integer getListingNumber() {
+        return listingNumber;
+    }
+
+    @Override
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public String getEmailAddress() {
+        return emailAddress;
+    }
 }

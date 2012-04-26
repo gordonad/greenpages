@@ -11,17 +11,16 @@
 
 package greenpages.internal;
 
+import greenpages.Directory;
+import greenpages.Listing;
+import org.springframework.stereotype.Component;
+
 import java.util.Collections;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
-import greenpages.Directory;
-import greenpages.Listing;
-
 /**
  * Stub implementation of {@link Directory} that allows for simple testing without a database.
- *
+ * <p/>
  * Uses Spring 2.* component scanning to find this class and create a bean. The name for this bean
  * is extracted from the {@link Component} annotation.
  */
@@ -32,9 +31,10 @@ public class DirectoryImpl implements Directory {
 
     /**
      * {@inheritDoc}
-     * 
+     * <p/>
      * Stub implementation will match only for term '<code>johnson</code>'.
      */
+    @Override
     public List<Listing> search(String term) {
         if (ROD_JOHNSON.getLastName().equalsIgnoreCase(term)) {
             Listing l = ROD_JOHNSON;
@@ -47,9 +47,10 @@ public class DirectoryImpl implements Directory {
 
     /**
      * {@inheritDoc}
-     * 
+     * <p/>
      * Stub implementation will return a {@link Listing} for ID 1.
      */
+    @Override
     public Listing findListing(int id) {
         if (id == ROD_JOHNSON.getListingNumber()) {
             return ROD_JOHNSON;

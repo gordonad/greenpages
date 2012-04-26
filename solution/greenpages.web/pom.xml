@@ -27,7 +27,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.spring-library</artifactId>
             <type>libd</type>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -79,6 +78,10 @@
             <artifactId>org.aspectj-library</artifactId>
             <type>libd</type>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.osgi</groupId>
+            <artifactId>org.springframework.osgi.extender</artifactId>
         </dependency>
     </dependencies>
 

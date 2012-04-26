@@ -13,20 +13,19 @@ package greenpages.web;
 
 import greenpages.Directory;
 import greenpages.Listing;
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 /**
  * Controller class for GreenPages web application.<p/>
- * 
+ * <p/>
  * This class is configured using Spring 2.5-style MVC annotations. Documentation for this feature can be found <a
  * href="http://static.springframework.org/spring/docs/2.5.x/reference/mvc.html#mvc-annotation">here</a>.<p/>
- * 
+ * <p/>
  * The use of {@link Controller} makes this class eligible for autodetection by &lt;context:component-scan/&gt; in the
  * context configuration.
  */
@@ -37,8 +36,8 @@ public class GreenPagesController {
      * This field is injected automatically by Spring. For this injection to be satisfied, the greenpages.web module
      * must either declare a bean of type {@link Directory} or it must import a <code>Directory</code> from OSGi.
      */
-	@Autowired
-	private Directory directory;   
+    @Autowired
+    private Directory directory;
 
 
     @RequestMapping("/home.htm")

@@ -20,6 +20,7 @@
         <module>greenpages.app</module>
         <module>greenpages.jpa</module>
         <module>greenpages.web</module>
+        <module>greenpages.test</module>
         <module>greenpages</module>
     </modules>
 </project>

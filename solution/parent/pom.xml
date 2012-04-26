@@ -53,7 +53,6 @@
         <validation.version>1.0.0.GA</validation.version>
     </properties>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -148,13 +147,13 @@
             <!-- Spring dm OSGi -->
             <dependency>
                 <groupId>org.springframework.osgi</groupId>
-                <artifactId>spring-osgi-extender</artifactId>
+                <artifactId>org.springframework.osgi.extender</artifactId>
                 <version>${spring.osgi.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.osgi</groupId>
-                <artifactId>spring-osgi-core</artifactId>
+                <artifactId>org.springframework.osgi.core</artifactId>
                 <version>${spring.osgi.version}</version>
                 <scope>provided</scope>
                 <exclusions>
