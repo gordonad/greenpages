@@ -123,6 +123,6 @@ Contact Me
 ----------
 - http://technophile.gordondickens.com
 - gordon@gordondickens.com
-- @gdickens
+- [@gdickens](http://twitter.com/gdickens/ "Twitter")
   
 
