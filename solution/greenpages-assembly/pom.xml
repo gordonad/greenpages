@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		  http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.eclipse.virgo</groupId>
+        <artifactId>greenpages.parent-solution</artifactId>
+        <version>2.4.2.RELEASE</version>
+        <relativePath>../parent</relativePath>
+    </parent>
+
+    <artifactId>greenpages-assembly</artifactId>
+    <packaging>pom</packaging>
+
+    <name>GreenPages Assembly (pom)</name>
+    <description>GreenPages Assembly</description>
+
+    <properties>
+        <deploy.dir>${project.build.directory}/repository</deploy.dir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>greenpages.services-solution</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>greenpages.jpa-solution</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>greenpages.db-solution</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>greenpages.web-solution</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <!-- Required for the web bundle as dependencies are not propagated up from war build types -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>com.springsource.freemarker</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-par-plugin</artifactId>
+                <configuration>
+                    <applicationSymbolicName>greenpages</applicationSymbolicName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-ext-deps</id>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <outputDirectory>${deploy.dir}/ext</outputDirectory>
+                            <excludeScope>provided</excludeScope>
+                            <excludeGroupIds>org.junit,${project.groupId}</excludeGroupIds>
+                            <excludeTypes>pom</excludeTypes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${deploy.dir}/usr</outputDirectory>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <excludeGroupIds>${project.groupId},org.apache.log4j</excludeGroupIds>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

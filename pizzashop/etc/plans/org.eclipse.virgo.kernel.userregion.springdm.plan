@@ -1,0 +1,17 @@
+<plan name="org.eclipse.virgo.kernel.userregion.springdm" version="3.0.0" scoped="false" atomic="false"
+                xmlns="http://www.eclipse.org/virgo/schema/plan"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="
+					http://www.eclipse.org/virgo/schema/plan 
+					http://www.eclipse.org/virgo/schema/plan/eclipse-virgo-plan.xsd">
+
+        <artifact type="bundle" name="org.springframework.osgi.core" version="[1.2.1, 1.3.0)"/>
+        <artifact type="bundle" name="org.springframework.osgi.extender" version="[1.2.1, 1.3.0)"/>
+        <artifact type="bundle" name="org.springframework.osgi.io" version="[1.2.1, 1.3.0)"/>
+        <artifact type="bundle" name="org.eclipse.virgo.kernel.agent.dm" version="[3.0, 4.0)"/>
+        <artifact type="bundle" name="org.eclipse.virgo.kernel.deployer.dm" version="[3.0, 4.0)"/>
+		<artifact type="bundle" name="org.eclipse.equinox.ds" version="0.0.0"/>
+		<artifact type="bundle" name="org.eclipse.equinox.util" version="0.0.0"/>
+		<artifact type="configuration" name="osgi.console.telnet" version="0"/>
+		<artifact type="configuration" name="osgi.console.ssh" version="0"/>
+</plan>
