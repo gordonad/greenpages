@@ -1,6 +1,0 @@
-Library-SymbolicName: org.aspectj
-Library-Version: 1.6.12.RELEASE
-Library-Name: AspectJ
-Import-Bundle:
- com.springsource.org.aspectj.runtime;version="[1.6.12.RELEASE ,1.6.12.RELEASE]",
- com.springsource.org.aspectj.weaver;version="[1.6.12.RELEASE, 1.6.12.RELEASE]"
