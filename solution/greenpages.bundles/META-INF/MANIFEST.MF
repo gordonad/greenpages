@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Application-SymbolicName: greenpages.bundles
+Application-Version: 2.4.3.RELEASE
+Application-Name: Greenpages Bundles
+

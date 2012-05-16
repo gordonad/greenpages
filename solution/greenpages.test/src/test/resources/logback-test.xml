@@ -7,10 +7,12 @@
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%-5level %logger{0} - %msg%n</pattern>
+            <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
+            <!--<pattern>%-5level %logger{0} - %msg%n%n</pattern>-->
         </encoder>
     </appender>
 
+    <logger name="org.ops4j" level="trace" />
     <logger name="com.chariotsolutions" level="debug" />
     <logger name="greenpages" level="debug" />
 

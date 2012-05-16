@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0
+            http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd"
+           default-activation="eager">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" init-method="createDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <property name="url" value="jdbc:h2:.~/greenpages-db/greenpages"/>
+        <property name="username" value="greenpages"/>
+        <property name="password" value="pass"/>
+    </bean>
+
+    <bean class="greenpages.web.TestDataPopulator" init-method="populate">
+        <argument ref="dataSource"/>
+        <argument value="file:../../db/db.sql"/>
+    </bean>
+
+</blueprint>

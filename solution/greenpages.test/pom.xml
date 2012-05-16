@@ -7,8 +7,7 @@
     <parent>
         <groupId>org.eclipse.virgo</groupId>
         <artifactId>greenpages.parent-solution</artifactId>
-        <version>2.4.2.RELEASE</version>
-        <relativePath>../parent</relativePath>
+        <version>2.4.3.RELEASE</version>
     </parent>
 
     <artifactId>greenpages.test</artifactId>
@@ -19,34 +18,28 @@
     <properties>
         <commons.lang.version>3.1</commons.lang.version>
         <felix.version>4.0.2</felix.version>
-        <javax.inject.version>1</javax.inject.version>
-        <logback.version>1.0.2</logback.version>
-        <maven.tycho.plugin>0.12.0</maven.tycho.plugin>
+        <javax.inject.version>1.0</javax.inject.version>
+        <logback.version>1.0.3</logback.version>
+        <maven.tycho.plugin>0.14.1</maven.tycho.plugin>
         <mockito.version>1.9.0</mockito.version>
-        <pax.exam.version>2.4.0.RC1</pax.exam.version>
+        <pax.exam.version>2.4.0</pax.exam.version>
         <pax.runner.version>1.7.6</pax.runner.version>
-        <pax.url.version>1.4.0.RC1</pax.url.version>
-        <!--<pax.url.version>1.3.3</pax.url.version>-->
+        <pax.url.version>1.4.0</pax.url.version>
         <slf4j.version>1.6.4</slf4j.version>
-        <tycho.version>3.6.2.R36x_v20110210</tycho.version>
     </properties>
 
 
     <dependencies>
         <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-atinject_1.0_spec</artifactId>
             <version>${javax.inject.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.virgo</groupId>
             <artifactId>greenpages.services-solution</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.spring-library</artifactId>
-            <type>libd</type>
         </dependency>
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -75,9 +68,19 @@
             <artifactId>org.springframework.instrument</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.aspects</artifactId>
-            <scope>test</scope>
+            <groupId>org.aspectj</groupId>
+            <artifactId>com.springsource.org.aspectj.runtime</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>com.springsource.org.aspectj.tools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>com.springsource.org.aspectj.weaver</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -93,12 +96,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>com.springsource.org.h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>org.aspectj-library</artifactId>
-            <type>libd</type>
             <scope>test</scope>
         </dependency>
 
@@ -139,13 +136,35 @@
             <version>${pax.url.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.ops4j.pax.runner</groupId>-->
+            <!--<artifactId>pax-runner-no-jcl</artifactId>-->
+            <!--<version>${pax.runner.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.felix</groupId>-->
+            <!--<artifactId>org.apache.felix.framework</artifactId>-->
+            <!--<version>${felix.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
 
         <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.framework</artifactId>
-            <version>${felix.version}</version>
-            <scope>test</scope>
+            <groupId>org.eclipse.osgi</groupId>
+            <artifactId>org.eclipse.osgi</artifactId>
+            <version>3.6.0.v20100517</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.eclipse.osgi</groupId>-->
+            <!--<artifactId>org.eclipse.osgi.services</artifactId>-->
+            <!--<version>3.3.0.v20110110</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.eclipse.osgi</groupId>-->
+            <!--<artifactId>org.eclipse.equinox.event</artifactId>-->
+            <!--<version>1.2.100.v20110110</version>-->
+        <!--</dependency>-->
+
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
