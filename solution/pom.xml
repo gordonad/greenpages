@@ -59,6 +59,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>javax.activation</groupId>
             <artifactId>com.springsource.javax.activation</artifactId>
@@ -267,7 +268,7 @@
             </dependency>
             <!-- Gemini Blueprint OSGi -->
             <dependency>
-                <groupId>org.eclipse.gemini.blueprint</groupId>
+                <groupId>org.eclipse.gemini</groupId>
                 <artifactId>org.eclipse.gemini.blueprint.extender</artifactId>
                 <version>${gemini.blueprint.version}</version>
                 <exclusions>
@@ -287,12 +288,12 @@
             </dependency>
             <dependency>
                 <groupId>org.eclipse.gemini.blueprint</groupId>
-                <artifactId>org.eclipse.gemini.blueprint.mock</artifactId>
+                <artifactId>gemini-blueprint-mock</artifactId>
                 <version>${gemini.blueprint.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>org.eclipse.gemini.blueprint</groupId>
+                <groupId>org.eclipse.gemini</groupId>
                 <artifactId>org.eclipse.gemini.blueprint.core</artifactId>
                 <version>${gemini.blueprint.version}</version>
                 <exclusions>
@@ -315,7 +316,7 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.eclipse.gemini.blueprint</groupId>
+                <groupId>org.eclipse.gemini</groupId>
                 <artifactId>org.eclipse.gemini.blueprint.io</artifactId>
                 <version>${gemini.blueprint.version}</version>
             </dependency>
