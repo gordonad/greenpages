@@ -18,8 +18,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>com.springsource.javax.persistence</artifactId>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
