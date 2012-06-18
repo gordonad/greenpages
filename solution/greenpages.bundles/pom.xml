@@ -26,7 +26,7 @@
 
     <properties>
         <maven.spring.bundlor.plugin>1.0.0.RELEASE</maven.spring.bundlor.plugin>
-        <maven.virgo.bundlor.plugin>1.1.0.M04</maven.virgo.bundlor.plugin>
+        <maven.virgo.bundlor.plugin>1.1.0.M05</maven.virgo.bundlor.plugin>
         <maven.war.plugin>2.2</maven.war.plugin>
     </properties>
 

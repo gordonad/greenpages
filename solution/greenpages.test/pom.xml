@@ -19,13 +19,13 @@
         <commons.lang.version>3.1</commons.lang.version>
         <felix.version>4.0.2</felix.version>
         <javax.inject.version>1.0</javax.inject.version>
-        <logback.version>1.0.3</logback.version>
+        <logback.version>1.0.5</logback.version>
         <maven.tycho.plugin>0.14.1</maven.tycho.plugin>
         <mockito.version>1.9.0</mockito.version>
         <pax.exam.version>2.4.0</pax.exam.version>
         <pax.runner.version>1.7.6</pax.runner.version>
         <pax.url.version>1.4.0</pax.url.version>
-        <slf4j.version>1.6.4</slf4j.version>
+        <slf4j.version>1.6.5</slf4j.version>
     </properties>
 
 

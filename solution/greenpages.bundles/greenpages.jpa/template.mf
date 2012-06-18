@@ -5,11 +5,11 @@ Bundle-SymbolicName: greenpages.jpa
 Bundle-Vendor: SpringSource Inc.
 Bundle-Description: Generated.From.Template
 Bundle-Version: 2.4.3
-Import-Template: 
+Import-Template:
  org.springframework.*;version="[3.0, 3.2)",
  greenpages;version="[2.4, 2.5)",
- javax.persistence;version="[1.0.0, 2.1.0)",
- org.apache.commons.dbcp.*;version="[1.2.2.osgi, 1.2.2.osgi]",
+ javax.persistence;version="[2.0.0, 3.0.0)",
+ org.apache.commons.dbcp.*;version="[1.2.0, 2.0.0)",
  javax.sql;version="0"
 Import-Bundle: 
  com.springsource.org.eclipse.persistence;version="[1.0.0, 2.1.0)",
@@ -17,7 +17,7 @@ Import-Bundle:
 Import-Package: 
  org.springframework.context.weaving;version="[3.0, 3.2)",
  org.springframework.transaction.aspectj;version="[3.0, 3.2)"
-Excluded-Exports: 
+Excluded-Exports:
  greenpages.jpa
 Excluded-Imports: 
  org.springframework.test.*,

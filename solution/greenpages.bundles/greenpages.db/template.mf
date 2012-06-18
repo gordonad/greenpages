@@ -5,8 +5,35 @@ Bundle-SymbolicName: greenpages.db
 Bundle-Vendor: SpringSource Inc.
 Bundle-Description: Generated.From.Template
 Bundle-Version: 2.4.3
-Import-Package: 
+Import-Package: javax.sql;version=0,
+ org.aspectj.lang;version="[1.6,1.7)",
+ org.aspectj.weaver;version="[1.6,1.7)",
+ org.aspectj.weaver.ast;version="[1.6,1.7)",
+ org.aspectj.weaver.bcel;version="[1.6,1.7)",
+ org.aspectj.weaver.bcel.asm;version="[1.6,1.7)",
+ org.aspectj.weaver.internal.tools;version="[1.6,1.7)",
+ org.aspectj.weaver.loadtime;version="[1.6,1.7)",
+ org.aspectj.weaver.loadtime.definition;version="[1.6,1.7)",
+ org.aspectj.weaver.ltw;version="[1.6,1.7)",
+ org.aspectj.weaver.model;version="[1.6,1.7)",
+ org.aspectj.weaver.patterns;version="[1.6,1.7)",
+ org.aspectj.weaver.reflect;version="[1.6,1.7)",
+ org.aspectj.weaver.tools;version="[1.6,1.7)",
+ org.springframework.instrument.classloading;version="[3.1,3.2)",
  org.h2;version="[1.0.71, 1.0.71]"
-Import-Template: 
- org.apache.commons.dbcp.*;version="[1.2.2.osgi, 1.2.2.osgi]",
- javax.sql;version="0"
+Import-Library: org.springframework.spring;version="[3.1,3.2.0)"
+Import-Bundle: org.springframework.batch.core;version="[2,3)",
+ org.springframework.batch.infrastructure;version="[2,3)",
+ org.eclipse.persistence.antlr;version=2.3.2,
+ org.eclipse.persistence.asm;version=2.3.2,
+ org.eclipse.persistence.core;version=2.3.2,
+ org.eclipse.persistence.jpa;version=2.3.2,
+ javax.persistence;version="[2,3)",
+ com.mysql.jdbc;import-scope:=application
+Import-Template:
+  javax.persistence.*;version="2.0";jpa="2.0",
+  org.apache.commons.dbcp.*;version="[1.1.2, 2)",
+  javax.sql;version="0"
+Excluded-Imports: org.springframework.*,
+ org.eclipse.persistence.*
+
