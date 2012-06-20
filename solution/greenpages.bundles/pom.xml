@@ -133,4 +133,18 @@
             </build>
         </profile>
     </profiles>
+
+    <distributionManagement>
+        <!-- releases repo -->
+        <repository>
+            <id>repo-rel</id>
+            <url>file:///code/greenpages/releases</url>
+        </repository>
+
+        <!-- snapshot repo -->
+        <snapshotRepository>
+            <id>repo-snap</id>
+            <url>file:///code/greenpages/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

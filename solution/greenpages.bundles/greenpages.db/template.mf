@@ -22,12 +22,12 @@ Import-Package: javax.sql;version=0,
  org.springframework.instrument.classloading;version="[3.1,3.2)",
  org.h2;version="[1.0.71, 1.0.71]"
 Import-Library: org.springframework.spring;version="[3.1,3.2.0)"
-Import-Bundle: org.springframework.batch.core;version="[2,3)",
- org.springframework.batch.infrastructure;version="[2,3)",
+Import-Bundle:
  org.eclipse.persistence.antlr;version=2.3.2,
  org.eclipse.persistence.asm;version=2.3.2,
  org.eclipse.persistence.core;version=2.3.2,
  org.eclipse.persistence.jpa;version=2.3.2,
+ org.eclipse.persistence.jpa.jpql;version=2.3.2,
  javax.persistence;version="[2,3)",
  com.mysql.jdbc;import-scope:=application
 Import-Template:
