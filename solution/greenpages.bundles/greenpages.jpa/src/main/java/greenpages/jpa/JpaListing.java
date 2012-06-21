@@ -26,6 +26,7 @@ public class JpaListing implements Listing {
 
     private String emailAddress;
 
+    @Override
     public Integer getListingNumber() {
         return listingNumber;
     }
@@ -34,6 +35,7 @@ public class JpaListing implements Listing {
         this.listingNumber = listingNumber;
     }
 
+    @Override
     public String getFirstName() {
         return firstName;
     }
@@ -42,6 +44,7 @@ public class JpaListing implements Listing {
         this.firstName = firstName;
     }
 
+    @Override
     public String getLastName() {
         return lastName;
     }
@@ -50,6 +53,7 @@ public class JpaListing implements Listing {
         this.lastName = lastName;
     }
 
+    @Override
     public String getEmailAddress() {
         return emailAddress;
     }

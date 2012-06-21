@@ -15,11 +15,11 @@ import java.util.List;
 
 /**
  * Main business interface for the GreenPages application.
- * 
- * <p>
+ * <p/>
+ * <p/>
  * Using this interface you can {@link #search(String) search} the directory for a {@link Listing} and you can access a
  * <code>Listing</code> {@link #findListing(int) by ID}.
- * 
+ *
  * @see Listing
  */
 public interface Directory {
@@ -27,7 +27,7 @@ public interface Directory {
     /**
      * Searches the directory for all {@link Listing Listings} that match the supplied term. Matching is done against
      * the {@link Listing#getLastName() last name} of all known <code>Listings</code>.
-     * 
+     *
      * @param term the search criteria.
      * @return the search results or an empty {@link List} if no matches are found.
      */
@@ -35,7 +35,7 @@ public interface Directory {
 
     /**
      * Finds the {@link Listing} with the supplied ID.
-     * 
+     *
      * @param id the ID of the <code>Listing</code>
      * @return the <code>Listing</code> or <code>null</code> if no match is found.
      */

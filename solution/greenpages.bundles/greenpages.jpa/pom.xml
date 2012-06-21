@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-		xmlns="http://maven.apache.org/POM/4.0.0"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.eclipse.virgo</groupId>
-        <artifactId>greenpages.bundles</artifactId>
-        <version>2.4.3.RELEASE</version>
-	</parent>
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.eclipse.virgo</groupId>
+        <artifactId>org.eclipse.virgo.greenpages.bundles</artifactId>
+        <version>2.5.1.RELEASE</version>
+    </parent>
 
-	<artifactId>greenpages.jpa-solution</artifactId>
-	<packaging>jar</packaging>
+    <artifactId>org.eclipse.virgo.greenpages.jpa</artifactId>
+    <packaging>jar</packaging>
 
-	<name>Greenpages JPA (jar)</name>
+    <name>Greenpages JPA (jar)</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.virgo</groupId>
-			<artifactId>greenpages.services-solution</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.virgo</groupId>
+            <artifactId>org.eclipse.virgo.greenpages.services</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- Persistence -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa</artifactId>
@@ -29,30 +30,26 @@
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
         </dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-instrument</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-aspects</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>com.springsource.org.h2</artifactId>
-			<scope>test</scope>
-		</dependency>
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>com.springsource.org.aspectj.runtime</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>org.springframework.oxm</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>com.springsource.org.aspectj.tools</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>org.springframework.transaction</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>com.springsource.org.h2</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>com.springsource.org.aspectj.weaver</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>com.springsource.org.apache.commons.dbcp</artifactId>
         </dependency>
     </dependencies>
 

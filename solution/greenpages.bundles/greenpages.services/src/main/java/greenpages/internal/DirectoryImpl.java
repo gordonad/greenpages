@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * Stub implementation of {@link Directory} that allows for simple testing without a database.
- * <p/>
+ *
  * Uses Spring 2.* component scanning to find this class and create a bean. The name for this bean
  * is extracted from the {@link Component} annotation.
  */
@@ -31,7 +31,7 @@ public class DirectoryImpl implements Directory {
 
     /**
      * {@inheritDoc}
-     * <p/>
+     * 
      * Stub implementation will match only for term '<code>johnson</code>'.
      */
     @Override
@@ -47,7 +47,7 @@ public class DirectoryImpl implements Directory {
 
     /**
      * {@inheritDoc}
-     * <p/>
+     * 
      * Stub implementation will return a {@link Listing} for ID 1.
      */
     @Override

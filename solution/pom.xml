@@ -6,8 +6,8 @@
           http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eclipse.virgo</groupId>
-    <artifactId>greenpages.parent-solution</artifactId>
-    <version>2.4.3.RELEASE</version>
+    <artifactId>org.eclipse.virgo.greenpages.parent</artifactId>
+    <version>2.5.1.RELEASE</version>
 
     <name>Greenpages Parent Solution (pom)</name>
 
@@ -21,6 +21,7 @@
 
     <properties>
         <activation.version>1.1.1</activation.version>
+        <aopalliance.version>1.0.0</aopalliance.version>
         <aspectj.version>1.6.12.RELEASE</aspectj.version>
         <common.dbcp.version>1.2.2.osgi</common.dbcp.version>
         <commons.pool.version>1.5.3</commons.pool.version>
@@ -32,39 +33,56 @@
         <javax.persistence.version>2.1.0.v201201251030</javax.persistence.version>
         <junit.version>4.10.0</junit.version>
         <logback.version>1.0.6</logback.version>
+        <maven.ant.plugin>1.7</maven.ant.plugin>
         <maven.assembly.plugin>2.3</maven.assembly.plugin>
+        <maven.checkstyle.plugin>2.7</maven.checkstyle.plugin>
         <maven.clean.plugin>2.4.1</maven.clean.plugin>
+        <maven.cobertura.plugin>2.5.1</maven.cobertura.plugin>
         <maven.compiler.plugin>2.4</maven.compiler.plugin>
         <maven.dependency.plugin>2.4</maven.dependency.plugin>
         <maven.deploy.plugin>2.7</maven.deploy.plugin>
+        <maven.eclipse.plugin>2.9</maven.eclipse.plugin>
+        <maven.enforcer.plugin>1.0.1</maven.enforcer.plugin>
+        <maven.exec.plugin>1.2.1</maven.exec.plugin>
+        <maven.failsafe.plugin>2.12</maven.failsafe.plugin>
+        <maven.findbugs.plugin>2.5</maven.findbugs.plugin>
+        <maven.groovy.plugin>1.4</maven.groovy.plugin>
         <maven.help.plugin>2.1.1</maven.help.plugin>
         <maven.install.plugin>2.3.1</maven.install.plugin>
         <maven.jar.plugin>2.4</maven.jar.plugin>
+        <maven.javadoc.plugin>2.8.1</maven.javadoc.plugin>
+        <maven.jetty.plugin>8.1.3.v20120416</maven.jetty.plugin>
+        <maven.jxr.plugin>2.3</maven.jxr.plugin>
+        <maven.osgi.validator.plugin>1.0.3</maven.osgi.validator.plugin>
+        <maven.plugin.plugin>3.0</maven.plugin.plugin>
+        <maven.pmd.plugin>2.7.1</maven.pmd.plugin>
+        <maven.project.info.reports.plugin>2.4</maven.project.info.reports.plugin>
         <maven.release.plugin>2.2.2</maven.release.plugin>
         <maven.resources.plugin>2.5</maven.resources.plugin>
         <maven.site.plugin>3.1</maven.site.plugin>
+        <maven.sonar.plugin>3.0</maven.sonar.plugin>
         <maven.source.plugin>2.1.2</maven.source.plugin>
         <maven.surefire.plugin>2.12</maven.surefire.plugin>
-        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+        <maven.taglist.plugin>2.4</maven.taglist.plugin>
+        <maven.test.failure.ignore>false</maven.test.failure.ignore>
         <maven.test.skip>false</maven.test.skip>
         <maven.tomcat.plugin>2.0-beta-1</maven.tomcat.plugin>
         <maven.version.range>[2.2.1,3.1.0)</maven.version.range>
         <maven.versions.plugin>1.3.1</maven.versions.plugin>
+        <maven.war.plugin>2.2</maven.war.plugin>
         <mysql.version>5.1.6</mysql.version>
+        <osgi.version>4.2.0</osgi.version>
         <pax.runner.version>1.7.6</pax.runner.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <eclipselink.version>2.4.0-RC2</eclipselink.version>
         <eclipselink.antlr.version>3.2.0.v201206041011</eclipselink.antlr.version>
         <eclipselink.asm.version>3.3.1.v201206041142</eclipselink.asm.version>
         <servlet.version>3.0.0.v201103241009</servlet.version>
         <slf4j.version>1.6.6</slf4j.version>
-        <spring.version>3.1.1.RELEASE</spring.version>
+        <spring.version>3.0.5.RELEASE</spring.version>
         <transaction.version>1.1.0</transaction.version>
         <validation.version>1.0.0.GA</validation.version>
     </properties>
-
-    <dependencies>
-
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -106,7 +124,7 @@
                 <scope>provided</scope>
             </dependency>
 
-<!-- EclipseLink Persistence OSGi Bundles -->
+            <!-- EclipseLink Persistence OSGi Bundles -->
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>javax.persistence</artifactId>
@@ -174,77 +192,48 @@
                 <scope>test</scope>
             </dependency>
             <!-- SPRING, SPRING, SPRINGITY SPRING -->
+            <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>org.springframework.spring-library</artifactId>-->
+            <!--<type>libd</type>-->
+            <!--<version>${spring.version}</version>-->
+            <!--<scope>provided</scope>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
+                <artifactId>org.springframework.aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.asm</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.aspects</artifactId>
                 <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
+                <artifactId>org.springframework.beans</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
+                <artifactId>org.springframework.context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-expression</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-asm</artifactId>
-                <version>${spring.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
+                <artifactId>org.springframework.context.support</artifactId>
                 <version>${spring.version}</version>
                 <exclusions>
                     <exclusion>
@@ -255,12 +244,44 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-orm</artifactId>
+                <artifactId>org.springframework.core</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.expression</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-oxm</artifactId>
+                <artifactId>org.springframework.instrument</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.jms</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.oxm</artifactId>
                 <version>${spring.version}</version>
                 <exclusions>
                     <exclusion>
@@ -271,27 +292,27 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-jms</artifactId>
+                <artifactId>org.springframework.transaction</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-instrument</artifactId>
+                <artifactId>org.springframework.test</artifactId>
                 <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-aspects</artifactId>
+                <artifactId>org.springframework.web</artifactId>
                 <version>${spring.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet</artifactId>
-                <version>${servlet.version}</version>
-                <scope>provided</scope>
+                <groupId>org.springframework</groupId>
+                <artifactId>org.springframework.web.servlet</artifactId>
+                <version>${spring.version}</version>
             </dependency>
+
+
             <!-- Gemini Blueprint OSGi -->
             <dependency>
                 <groupId>org.eclipse.gemini</groupId>
@@ -346,6 +367,25 @@
                 <artifactId>org.eclipse.gemini.blueprint.io</artifactId>
                 <version>${gemini.blueprint.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>${osgi.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.compendium</artifactId>
+                <version>${osgi.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.enterprise</artifactId>
+                <version>${osgi.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
             <!-- Logging with SLF4J & LogBack -->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -377,9 +417,28 @@
                 <version>${logback.version}</version>
                 <scope>provided</scope>
             </dependency>
+
+            <!-- Others -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet</artifactId>
+                <version>${servlet.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.aopalliance</groupId>
+                <artifactId>com.springsource.org.aopalliance</artifactId>
+                <version>${aopalliance.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>org.springframework.context.support</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
-
 
     <repositories>
         <repository>
@@ -403,7 +462,7 @@
             <url>http://repository.springsource.com/maven/bundles/milestone</url>
         </repository>
         <repository>
-            <id>EclipseLink Repo</id>
+            <id>org.eclipse.eclipselink.bundle.repo</id>
             <url>http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo</url>
             <name>EclipseLink Repo</name>
             <snapshots>
@@ -411,12 +470,12 @@
             </snapshots>
         </repository>
         <!--<repository>-->
-            <!--<id>EclipseLink Repo</id>-->
-            <!--<url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>-->
-            <!--<name>EclipseLink Repo</name>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
+        <!--<id>EclipseLink Repo</id>-->
+        <!--<url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>-->
+        <!--<name>EclipseLink Repo</name>-->
+        <!--<snapshots>-->
+        <!--<enabled>true</enabled>-->
+        <!--</snapshots>-->
         <!--</repository>-->
     </repositories>
 
@@ -451,6 +510,19 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <!--
+                    osgi-validator:validate
+                      Verifies whether the groupId and artifactId are reflected by the package names.
+                    -->
+                    <groupId>com.cedarsoft</groupId>
+                    <artifactId>osgi-validator-maven-plugin</artifactId>
+                    <version>${maven.osgi.validator.plugin}</version>
+                    <configuration>
+                        <!-- fail build on validation error -->
+                        <fail>false</fail>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -487,7 +559,6 @@
                         <junitArtifactName>org.junit:com.springsource.org.junit</junitArtifactName>
                         <argLine>
                             -javaagent:${user.home}/.m2/repository/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar
-                            <!--/Users/gordondickens/.m2/repository/org/springframework/spring-instrument/3.1.1.RELEASE/spring-instrument-3.1.1.RELEASE.jar-->
                         </argLine>
                     </configuration>
                     <dependencies>
@@ -502,6 +573,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-help-plugin</artifactId>
                     <version>${maven.help.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven.assembly.plugin}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -569,11 +645,6 @@
                     <version>${maven.resources.plugin}</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${maven.site.plugin}</version>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>${maven.versions.plugin}</version>
@@ -583,6 +654,11 @@
                         <detail>true</detail>
                         <generateBackupPoms>true</generateBackupPoms>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>${maven.plugin.plugin}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -603,6 +679,83 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven.site.plugin}</version>
+                <configuration>
+                    <reportPlugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>${maven.javadoc.plugin}</version>
+                            <configuration>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                            <version>${maven.checkstyle.plugin}</version>
+                            <configuration>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-project-info-reports-plugin</artifactId>
+                            <version>${maven.project.info.reports.plugin}</version>
+                            <configuration>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-jxr-plugin</artifactId>
+                            <version>${maven.jxr.plugin}</version>
+                            <configuration>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>cobertura-maven-plugin</artifactId>
+                            <version>${maven.cobertura.plugin}</version>
+                            <configuration>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                            <version>${maven.pmd.plugin}</version>
+                            <!--<inherited>true</inherited>-->
+                            <configuration>
+                                <rulesets>
+                                    <ruleset>/rulesets/basic.xml</ruleset>
+                                    <ruleset>/rulesets/controversial.xml</ruleset>
+                                </rulesets>
+                                <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                                <minimumTokens>100</minimumTokens>
+                                <targetJdk>${java.version}</targetJdk>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>findbugs-maven-plugin</artifactId>
+                            <version>${maven.findbugs.plugin}</version>
+                            <!--<inherited>true</inherited>-->
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>taglist-maven-plugin</artifactId>
+                            <version>${maven.taglist.plugin}</version>
+                            <!--<inherited>true</inherited>-->
+                        </plugin>
+                    </reportPlugins>
+                    <locales>en</locales>
+                </configuration>
             </plugin>
         </plugins>
     </build>

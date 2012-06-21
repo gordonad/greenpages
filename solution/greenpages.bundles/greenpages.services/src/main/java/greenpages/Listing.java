@@ -13,7 +13,7 @@ package greenpages;
 
 /**
  * Represents a listing in the GreenPages {@link Directory}.
- * 
+ *
  * @see Directory
  */
 public interface Listing {

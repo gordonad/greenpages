@@ -13,14 +13,12 @@ package greenpages.jpa;
 
 import greenpages.Directory;
 import greenpages.Listing;
-
-import java.util.List;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 /**
  * Implementation of {@link Directory} that uses JPA for persistence.<p />
@@ -40,10 +38,12 @@ final class JpaDirectory implements Directory {
     @PersistenceContext
     private EntityManager em;
 
+    @Override
     public Listing findListing(int id) {
         return em.find(JpaListing.class, id);
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<Listing> search(String term) {
         return em.createQuery(SEARCH_QUERY).setParameter("term", "%" + term.toUpperCase() + "%").getResultList();

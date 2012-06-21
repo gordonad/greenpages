@@ -7,40 +7,24 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.eclipse.virgo</groupId>
-        <artifactId>greenpages.bundles</artifactId>
-        <version>2.4.3.RELEASE</version>
+        <artifactId>org.eclipse.virgo.greenpages.bundles</artifactId>
+        <version>2.5.1.RELEASE</version>
     </parent>
 
-    <artifactId>greenpages.db-solution</artifactId>
+    <artifactId>org.eclipse.virgo.greenpages.db</artifactId>
     <packaging>jar</packaging>
 
     <name>Greenpages DB (jar)</name>
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>org.springframework.transaction</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>com.springsource.javax.transaction</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>javax.persistence</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.antlr</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.asm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>

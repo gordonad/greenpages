@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.eclipse.virgo</groupId>
-        <artifactId>greenpages.parent-solution</artifactId>
-        <version>2.4.3.RELEASE</version>
+        <artifactId>org.eclipse.virgo.greenpages.parent</artifactId>
+        <version>2.5.1.RELEASE</version>
     </parent>
 
-    <artifactId>greenpages.test</artifactId>
+    <artifactId>org.eclipse.virgo.greenpages.test</artifactId>
     <packaging>pom</packaging>
 
     <name>Greenpages TEST (pom)</name>

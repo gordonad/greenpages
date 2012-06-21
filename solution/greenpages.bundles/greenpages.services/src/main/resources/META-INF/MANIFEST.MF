@@ -1,10 +1,9 @@
 Manifest-Version: 1.0
-Export-Package: greenpages;version="2.4.3"
+Export-Package: greenpages;version="2.5.1"
 Bundle-Vendor: SpringSource Inc.
-Bundle-Description: Static.Manifest
-Bundle-Version: 2.4.3
-Tool: Bundlor 1.0.0.RELEASE
-Bundle-Name: GreenPages Services
+Bundle-Version: 2.5.1
+Tool: Bundlor 1.1.0.M05
+Bundle-Name: GreenPages Service
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: greenpages.services
+Bundle-SymbolicName: org.eclipse.virgo.greenpages.services
 

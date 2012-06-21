@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
-Application-SymbolicName: greenpages.bundles
-Application-Version: 2.4.3.RELEASE
+Application-SymbolicName: org.eclipse.virgo.greenpages.bundles
+Bundle-Description: Static.Manifest
+Application-Version: 2.5.1.RELEASE
 Application-Name: Greenpages Bundles
 
