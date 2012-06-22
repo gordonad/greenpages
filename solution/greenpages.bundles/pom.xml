@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 		  http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -59,21 +59,29 @@
             <groupId>org.aopalliance</groupId>
             <artifactId>com.springsource.org.aopalliance</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.osgi</groupId>-->
-            <!--<artifactId>org.osgi.core</artifactId>-->
-            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.osgi</groupId>-->
-            <!--<artifactId>org.osgi.compendium</artifactId>-->
-            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.osgi</groupId>-->
-            <!--<artifactId>org.osgi.enterprise</artifactId>-->
-            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.enterprise</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.gemini</groupId>
+            <artifactId>org.eclipse.gemini.blueprint.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.gemini</groupId>
+            <artifactId>org.eclipse.gemini.blueprint.io</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

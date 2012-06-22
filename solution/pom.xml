@@ -371,19 +371,19 @@
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
                 <version>${osgi.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.compendium</artifactId>
                 <version>${osgi.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.enterprise</artifactId>
                 <version>${osgi.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
 
             <!-- Logging with SLF4J & LogBack -->
@@ -391,31 +391,31 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jul-to-slf4j</artifactId>
                 <version>${slf4j.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
                 <version>${logback.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
 
             <!-- Others -->

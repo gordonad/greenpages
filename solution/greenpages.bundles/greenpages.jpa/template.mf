@@ -19,7 +19,7 @@ Import-Bundle:
  org.eclipse.persistence.asm;version=3.3,
  org.eclipse.persistence.core;version=2.4,
  org.eclipse.persistence.jpa;version=2.4,
- javax.persistence;version="[2.1,2.2)"
+ javax.persistence;version="[2.0,2.2)"
 Import-Package:
  org.springframework.context.weaving;version="[3.0, 3.5)",
  org.springframework.transaction.aspectj;version="[3.0, 3.5)"

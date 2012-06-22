@@ -12,12 +12,13 @@
     </parent>
 
     <artifactId>org.eclipse.virgo.greenpages.assembly</artifactId>
-    <packaging>pom</packaging>
+    <packaging>par</packaging>
 
     <name>GreenPages Assembly (pom)</name>
     <description>GreenPages Assembly</description>
 
     <properties>
+        <maven.par.plugin>1.0.0.RELEASE</maven.par.plugin>
         <deploy.dir>${project.build.directory}/repository</deploy.dir>
         <!--<deploy.dir>${env.VWS_HOME}/repository</deploy.dir>-->
     </properties>
@@ -53,6 +54,15 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-par-plugin</artifactId>
+                <version>${maven.par.plugin}</version>
+                <configuration>
+                    <applicationSymbolicName>greenpages</applicationSymbolicName>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>

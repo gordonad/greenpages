@@ -38,5 +38,9 @@
             <groupId>com.mysql.jdbc</groupId>
             <artifactId>com.springsource.com.mysql.jdbc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>com.springsource.org.apache.commons.dbcp</artifactId>
+        </dependency>
     </dependencies>
 </project>
