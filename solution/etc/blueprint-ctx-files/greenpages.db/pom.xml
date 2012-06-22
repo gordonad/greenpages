@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+          http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.eclipse.virgo</groupId>
+        <artifactId>org.eclipse.virgo.greenpages.bundles</artifactId>
+        <version>2.5.1.RELEASE</version>
+    </parent>
+
+    <artifactId>org.eclipse.virgo.greenpages.db</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Greenpages DB (jar)</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>org.springframework.transaction</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>com.springsource.javax.transaction</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>com.springsource.org.h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>com.springsource.javax.validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql.jdbc</groupId>
+            <artifactId>com.springsource.com.mysql.jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>com.springsource.org.apache.commons.dbcp</artifactId>
+        </dependency>
+    </dependencies>
+</project>

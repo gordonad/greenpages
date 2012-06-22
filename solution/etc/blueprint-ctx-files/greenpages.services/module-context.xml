@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:context="http://www.springframework.org/schema/context"
+           xsi:schemaLocation="
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.osgi.org/xmlns/blueprint/v1.0.0
+            http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd"
+           default-activation="eager">
+
+    <!--  enables classpath component scanning for this module -->
+    <context:component-scan base-package="greenpages.internal"/>
+
+</blueprint>
