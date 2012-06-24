@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:compendium="http://www.springframework.org/schema/osgi-compendium"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/osgi
+          http://www.springframework.org/schema/osgi/spring-osgi.xsd
+          http://www.springframework.org/schema/osgi-compendium
+          http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd"
+       xmlns:osgi="http://www.springframework.org/schema/osgi">
+
+
+    <!-- Configures and loaded properties file named by persistent-id (without .properties extension -->
+    <compendium:cm-properties id="database.props" persistent-id="org.eclipse.virgo.greenpages.db.config"/>
+
+    <!--
+        db.driverClassName=
+        db.url=jdbc:h2:~/greenpages-db/greenpages
+        db.username=greenpages
+        db.password=pass
+    -->
+    <!-- Export the JDBC DataSource with the Service Name 'dataSource' -->
+    <osgi:service ref="dataSource" interface="javax.sql.DataSource"/>
+
+
+</beans>

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns:context="http://www.springframework.org/schema/context"
-           xmlns:compendium="http://www.eclipse.org/gemini/blueprint/schema/blueprint-compendium"
-           xsi:schemaLocation="http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context.xsd
-            http://www.eclipse.org/gemini/blueprint/schema/blueprint-compendium
-            http://www.eclipse.org/gemini/blueprint/schema/blueprint-compendium/gemini-blueprint-compendium.xsd
-            http://www.osgi.org/xmlns/blueprint/v1.0.0
-            http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd"
-           default-activation="eager">
-
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	     http://www.springframework.org/schema/beans/spring-beans.xsd
+	     http://www.springframework.org/schema/context
+	     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- see osgi-context.xml file for prop svc -->
     <context:property-placeholder properties-ref="database.props"/>
@@ -24,15 +19,5 @@
     </bean>
 
 
-    <compendium:cm-properties id="database.props" persistent-id="org.eclipse.virgo.greenpages.db.config"/>
+</beans>
 
-    <!--
-        db.driverClassName=
-        db.url=jdbc:h2:~/greenpages-db/greenpages
-        db.username=greenpages
-        db.password=pass
-    -->
-    <!-- Export the JDBC DataSource with the Service Name 'dataSource' -->
-    <service ref="dataSource" interface="javax.sql.DataSource"/>
-
-</blueprint>
