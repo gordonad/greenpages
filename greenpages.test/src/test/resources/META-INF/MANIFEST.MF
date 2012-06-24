@@ -8,4 +8,5 @@ Bundle-Name: GreenPages Test
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.eclipse.virgo.greenpages.test
 Import-Package: org.springframework.stereotype;version="[3.0, 3.5)"
+Export-Package: com.gordondickens
 

@@ -15,7 +15,7 @@
 
     <modules>
         <module>greenpages.bundles</module>
-        <!--<module>greenpages.test</module>-->
+        <module>greenpages.test</module>
         <module>greenpages-assembly</module>
     </modules>
 
@@ -27,6 +27,7 @@
         <commons.pool.version>1.5.3</commons.pool.version>
         <commons.fileupload.version>1.2.1</commons.fileupload.version>
         <gemini.blueprint.version>1.0.0.RELEASE</gemini.blueprint.version>
+        <groovy.version>1.8.6</groovy.version>
         <freemarker.version>2.3.18</freemarker.version>
         <h2.version>1.0.71</h2.version>
         <java.version>1.6</java.version>
@@ -64,8 +65,6 @@
         <maven.source.plugin>2.1.2</maven.source.plugin>
         <maven.surefire.plugin>2.12</maven.surefire.plugin>
         <maven.taglist.plugin>2.4</maven.taglist.plugin>
-        <maven.test.failure.ignore>false</maven.test.failure.ignore>
-        <maven.test.skip>false</maven.test.skip>
         <maven.tomcat.plugin>2.0-beta-1</maven.tomcat.plugin>
         <maven.version.range>[2.2.1,3.1.0)</maven.version.range>
         <maven.versions.plugin>1.3.1</maven.versions.plugin>
@@ -81,8 +80,16 @@
         <slf4j.version>1.6.6</slf4j.version>
         <spring.version>3.0.5.RELEASE</spring.version>
         <transaction.version>1.1.0</transaction.version>
+        <virgo.version>3.5.0.M04</virgo.version>
         <validation.version>1.0.0.GA</validation.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -311,6 +318,11 @@
                 <artifactId>org.springframework.web.servlet</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
 
 
             <!-- Gemini Blueprint OSGi -->
@@ -437,6 +449,25 @@
                 </exclusions>
             </dependency>
 
+            <!-- Virgo Stuff, for Testing Primarily -->
+            <dependency>
+                <groupId>org.eclipse.virgo.util</groupId>
+                <artifactId>org.eclipse.virgo.util.parser.manifest</artifactId>
+                <version>${virgo.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.virgo.util</groupId>
+                <artifactId>org.eclipse.virgo.util.osgi.manifest</artifactId>
+                <version>${virgo.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.virgo.util</groupId>
+                <artifactId>org.eclipse.virgo.util.test</artifactId>
+                <version>${virgo.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -469,6 +500,22 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>org.virgo.repository.bundles.release</id>
+            <name>Virgo EBR - RELEASE</name>
+            <url>http://build.eclipse.org/rt/virgo/maven/bundles/release</url>
+        </repository>
+        <repository>
+            <id>org.virgo.repository.bundles.milestone</id>
+            <name>Virgo EBR - MILESTONE</name>
+            <url>http://build.eclipse.org/rt/virgo/maven/bundles/milestone</url>
+        </repository>
+        <repository>
+            <id>org.virgo.repository.libraries.snapshot</id>
+            <name>Virgo EBR - SNAPSHOT</name>
+            <url>http://build.eclipse.org/rt/virgo/maven/bundles/snapshot</url>
+        </repository>
+
         <!--<repository>-->
         <!--<id>EclipseLink Repo</id>-->
         <!--<url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>-->
@@ -549,7 +596,9 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.plugin}</version>
                     <configuration>
-                        <skipTests>true</skipTests>
+                        <!-- Show the test errors on console -->
+                        <useFile>false</useFile>
+                        <printSummary>false</printSummary>
                         <includes>
                             <include>**/*Tests.java</include>
                         </includes>
@@ -712,11 +761,11 @@
                                 <aggregate>true</aggregate>
                             </configuration>
                             <reportSets>
-                              <reportSet>
-                                <reports>
-                                  <report>dependencies</report>
-                                </reports>
-                              </reportSet>
+                                <reportSet>
+                                    <reports>
+                                        <report>dependencies</report>
+                                    </reports>
+                                </reportSet>
                             </reportSets>
                         </plugin>
                         <plugin>

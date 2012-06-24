@@ -1,220 +1,298 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.eclipse.virgo</groupId>
-        <artifactId>org.eclipse.virgo.greenpages.parent</artifactId>
-        <version>2.5.1.RELEASE</version>
-    </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.eclipse.virgo</groupId>
+		<artifactId>org.eclipse.virgo.greenpages.parent</artifactId>
+		<version>2.5.1.RELEASE</version>
+	</parent>
 
-    <artifactId>org.eclipse.virgo.greenpages.test</artifactId>
-    <packaging>pom</packaging>
+	<artifactId>org.eclipse.virgo.greenpages.test</artifactId>
+	<packaging>jar</packaging>
 
-    <name>Greenpages TEST (pom)</name>
+	<name>Greenpages TEST (pom)</name>
 
-    <properties>
-        <commons.lang.version>3.1</commons.lang.version>
-        <felix.version>4.0.2</felix.version>
-        <javax.inject.version>1.0</javax.inject.version>
-        <logback.version>1.0.6</logback.version>
-        <maven.tycho.plugin>0.14.1</maven.tycho.plugin>
-        <mockito.version>1.9.0</mockito.version>
-        <pax.exam.version>2.4.0</pax.exam.version>
-        <pax.runner.version>1.7.6</pax.runner.version>
-        <pax.url.version>1.4.0</pax.url.version>
-        <slf4j.version>1.6.6</slf4j.version>
-    </properties>
-
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-atinject_1.0_spec</artifactId>
-            <version>${javax.inject.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.virgo</groupId>
-            <artifactId>greenpages.services-solution</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>com.springsource.javax.persistence</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>com.springsource.org.eclipse.persistence</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>com.springsource.org.eclipse.persistence.jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit</groupId>
-            <artifactId>com.springsource.org.junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.instrument</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>com.springsource.org.aspectj.runtime</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>com.springsource.org.aspectj.tools</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>com.springsource.org.aspectj.weaver</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>com.springsource.org.apache.commons.dbcp</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>com.springsource.org.h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- PAX Exam Configuration -->
-        <!-- Quicker non-forking Container -->
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-container-native</artifactId>
-            <version>${pax.exam.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Slower Pax Runner Based Container -->
-        <!--<dependency>-->
-            <!--<groupId>org.ops4j.pax.exam</groupId>-->
-            <!--<artifactId>pax-exam-container-paxrunner</artifactId>-->
-            <!--<version>${pax.exam.version}</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-junit4</artifactId>
-            <version>${pax.exam.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-link-mvn</artifactId>
-            <version>${pax.exam.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ops4j.pax.url</groupId>
-            <artifactId>pax-url-aether</artifactId>
-            <version>${pax.url.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.ops4j.pax.runner</groupId>-->
-            <!--<artifactId>pax-runner-no-jcl</artifactId>-->
-            <!--<version>${pax.runner.version}</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.felix</groupId>-->
-            <!--<artifactId>org.apache.felix.framework</artifactId>-->
-            <!--<version>${felix.version}</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
-        <dependency>
-            <groupId>org.eclipse.osgi</groupId>
-            <artifactId>org.eclipse.osgi</artifactId>
-            <version>3.6.0.v20100517</version>
-        </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.eclipse.osgi</groupId>-->
-            <!--<artifactId>org.eclipse.osgi.services</artifactId>-->
-            <!--<version>3.3.0.v20110110</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.eclipse.osgi</groupId>-->
-            <!--<artifactId>org.eclipse.equinox.event</artifactId>-->
-            <!--<version>1.2.100.v20110110</version>-->
-        <!--</dependency>-->
+	<properties>
+		<commons.lang.version>3.1</commons.lang.version>
+		<eclipse.osgi.version>3.7.1.R37x_v20110808-1106</eclipse.osgi.version>
+		<felix.version>4.0.2</felix.version>
+		<javax.inject.version>1.0</javax.inject.version>
+		<logback.version>1.0.6</logback.version>
+		<maven.tycho.plugin>0.15.0</maven.tycho.plugin>
+		<mockito.version>1.9.0</mockito.version>
+		<pax.exam.version>2.4.0</pax.exam.version>
+		<pax.exam.version>3.0.0.M2</pax.exam.version>
+		<pax.runner.version>1.7.6</pax.runner.version>
+		<pax.url.version>1.4.2</pax.url.version>
+		<slf4j.version>1.6.6</slf4j.version>
+		<spock.version>0.6-groovy-1.8</spock.version>
+	</properties>
 
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-            <scope>test</scope>
-        </dependency>
+	<dependencies>
+		<!-- <dependency> <groupId>org.spockframework</groupId> <artifactId>spock-core</artifactId> 
+			<version>${spock.version}</version> <scope>test</scope> </dependency> -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-atinject_1.0_spec</artifactId>
+			<version>${javax.inject.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.virgo</groupId>
+			<artifactId>org.eclipse.virgo.greenpages.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- EclipseLink Persistence OSGi Bundles -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.antlr</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.asm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit</groupId>
+			<artifactId>com.springsource.org.junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.instrument</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>com.springsource.org.aspectj.runtime</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>com.springsource.org.aspectj.tools</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>com.springsource.org.apache.commons.dbcp</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>com.springsource.org.h2</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<!-- PAX Exam Configuration -->
+		<!-- Quicker non-forking Container -->
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-container-native</artifactId>
+			<version>${pax.exam.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <!-- Logging with SLF4J & LogBack -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<!-- Slower Pax Runner Based Container -->
+		<!--<dependency> -->
+		<!--<groupId>org.ops4j.pax.exam</groupId> -->
+		<!--<artifactId>pax-exam-container-paxrunner</artifactId> -->
+		<!--<version>${pax.exam.version}</version> -->
+		<!--<scope>test</scope> -->
+		<!--</dependency> -->
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.eclipse.tycho</groupId>
-                <artifactId>tycho-maven-plugin</artifactId>
-                <version>${maven.tycho.plugin}</version>
-                <extensions>true</extensions>
-            </plugin>
-        </plugins>
-    </build>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-junit4</artifactId>
+			<version>${pax.exam.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-link-mvn</artifactId>
+			<version>${pax.exam.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-aether</artifactId>
+			<version>${pax.url.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!--<dependency> -->
+		<!--<groupId>org.ops4j.pax.runner</groupId> -->
+		<!--<artifactId>pax-runner-no-jcl</artifactId> -->
+		<!--<version>${pax.runner.version}</version> -->
+		<!--<scope>test</scope> -->
+		<!--</dependency> -->
+		<!--<dependency> -->
+		<!--<groupId>org.apache.felix</groupId> -->
+		<!--<artifactId>org.apache.felix.framework</artifactId> -->
+		<!--<version>${felix.version}</version> -->
+		<!--<scope>test</scope> -->
+		<!--</dependency> -->
+
+		<dependency>
+			<groupId>org.eclipse.osgi</groupId>
+			<artifactId>org.eclipse.osgi</artifactId>
+			<version>${eclipse.osgi.version}</version>
+		</dependency>
+		<!--<dependency> -->
+		<!--<groupId>org.eclipse.osgi</groupId> -->
+		<!--<artifactId>org.eclipse.osgi.services</artifactId> -->
+		<!--<version>3.3.0.v20110110</version> -->
+		<!--</dependency> -->
+		<!--<dependency> -->
+		<!--<groupId>org.eclipse.osgi</groupId> -->
+		<!--<artifactId>org.eclipse.equinox.event</artifactId> -->
+		<!--<version>1.2.100.v20110110</version> -->
+		<!--</dependency> -->
+
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Logging with SLF4J & LogBack -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.virgo.util</groupId>
+			<artifactId>org.eclipse.virgo.util.parser.manifest</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.virgo.util</groupId>
+			<artifactId>org.eclipse.virgo.util.osgi.manifest</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.virgo.util</groupId>
+			<artifactId>org.eclipse.virgo.util.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- <plugin>
+				<groupId>org.codehaus.gmaven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<version>${maven.groovy.plugin}</version>
+				<configuration>
+					<debug>false</debug>
+					<verbose>true</verbose>
+					<stacktrace>true</stacktrace>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generateStubs</goal>
+							<goal>compile</goal>
+							<goal>generateTestStubs</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${maven.tycho.plugin}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<!-- Show the test errors on console -->
+					<useFile>false</useFile>
+					<printSummary>false</printSummary>
+					<includes>
+						<include>**/*Tests.java</include>
+						<include>**/*Tests.groovy</include>
+					</includes>
+					<excludes>
+						<exclude>**/Abstract*.java</exclude>
+					</excludes>
+					<junitArtifactName>org.junit:com.springsource.org.junit</junitArtifactName>
+					<argLine>
+						-javaagent:${user.home}/.m2/repository/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar
+					</argLine>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>org.springframework.instrument</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>

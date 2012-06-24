@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true" scan="true" scanPeriod="30 seconds">
+<configuration>
 
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>
@@ -8,12 +8,11 @@
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
-            <!--<pattern>%-5level %logger{0} - %msg%n%n</pattern>-->
         </encoder>
     </appender>
 
     <logger name="org.ops4j" level="trace" />
-    <logger name="com.chariotsolutions" level="debug" />
+    <logger name="com.gordondickens" level="debug" />
     <logger name="greenpages" level="debug" />
 
     <root level="debug">

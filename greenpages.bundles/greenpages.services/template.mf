@@ -7,5 +7,6 @@ Bundle-Vendor: SpringSource Inc.
 Bundle-Version: 2.5.1
 Import-Template:
  org.springframework.*;version="[3.0, 3.5)"
+Export-Package: greenpages
 Excluded-Exports: 
  greenpages.internal

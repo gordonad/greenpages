@@ -1,4 +1,4 @@
-package com.chariotsolutions.greenpages;
+package com.gordondickens.greenpages;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 public class BaseTestConfig {
     protected static final Logger logger = LoggerFactory.getLogger(BaseTestConfig.class);
     //todo - externalize settings, at a minimum get the user.home
-    protected static final String REPOSITORY_ROOT = "/Users/gordondickens/.m2/repository";
-    protected static final String DEFAULT_MODULE_VERSION = "2.4.3.RELEASE";
+    protected static final String REPOSITORY_ROOT = "/Volumes/FunfHundert/mavenrepo";
+    protected static final String DEFAULT_MODULE_VERSION = "2.5.1.RELEASE";
     protected static final String DEFAULT_MODULE_GROUP = "org.eclipse.virgo";
     protected static final String EQUINOX_VERSION = "3.6.2";
 
@@ -76,31 +76,31 @@ public class BaseTestConfig {
 //        String generatedLocation = getFileLocationFromRepository(group, artifact, version);
 //        assertEquals(jarPath, generatedLocation);
 //
-//        group = "com.chariotsolutions.demo";
+//        group = "com.gordondickens.demo";
 //        artifact = "greenpages-demo";
 //        version = "1.2.3";
 //
-//        assertEquals("/Users/gordondickens/.m2/repository/com/chariotsolutions/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
+//        assertEquals("/Users/gordondickens/.m2/repository/com/gordondickens/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
 //
 //
-//        group = "  com.chariotsolutions.demo";
+//        group = "  com.gordondickens.demo";
 //        artifact = "greenpages-demo  ";
 //        version = " 1.2.3 ";
 //
-//        assertEquals("/Users/gordondickens/.m2/repository/com/chariotsolutions/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
+//        assertEquals("/Users/gordondickens/.m2/repository/com/gordondickens/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
 //
-//        group = "\tcom.chariotsolutions.demo";
+//        group = "\tcom.gordondickens.demo";
 //        artifact = "\tgreenpages-demo";
 //        version = "\t1.2.3\t";
 //
-//        assertEquals("/Users/gordondickens/.m2/repository/com/chariotsolutions/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
+//        assertEquals("/Users/gordondickens/.m2/repository/com/gordondickens/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
 //
 //
 //        group = null;
 //        artifact = "\tgreenpages-demo";
 //        version = "\t1.2.3\t";
 //
-////        assertEquals("/Users/gordondickens/.m2/repository/com/chariotsolutions/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
+////        assertEquals("/Users/gordondickens/.m2/repository/com/gordondickens/demo/greenpages-demo/1.2.3/greenpages-demo-1.2.3.jar", getFileLocationFromRepository(group, artifact, version));
 //
 //    }
 }
