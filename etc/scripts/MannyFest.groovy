@@ -1,4 +1,5 @@
 import java.util.jar.JarFile
+import java.util.jar.Manifest
 
 //import org.slf4j.Logger
 //import org.slf4j.LoggerFactory
@@ -13,17 +14,33 @@ import java.util.jar.JarFile
 // TODO - Is there an OSGi class that parses bundle manifests?
 
 
-def dir = new File('../..')
+
+
+def File dir = new File('../..')
+def int jarCount = 0
 def headers = ['Bundle-ClassPath', 'Bundle-SymbolicName', 'Bundle-Version', 'DynamicImport-Package', 'Export-Package', 'Import-Package', 'Fragment-Host', 'Require-Bundle', 'Require-Capability']
 // def fullList = ['Bundle-ActivationPolicy','Bundle-Activator','Bundle-Category','Bundle-ClassPath','Bundle-ContactAddress','Bundle-Copyright','Bundle-Description','Bundle-DocURL','Bundle-Icon','Bundle-License','Bundle-Localization','Bundle-ManifestVersion','Bundle-Name','Bundle-NativeCode','Bundle-SymbolicName','Bundle-UpdateLocation','Bundle-Vendor','Bundle-Version','DynamicImport-Package','Export-Package','Import-Package','Fragment-Host','Provided-Capability','Require-Bundle','Require-Capability']
 
-println "Manny is scanning for jar files..."
+if (args?.length == 1) {
+    File checkArg = new File(args[0])
+    if (checkArg && checkArg.isDirectory()) {
+    dir = checkArg
+    } else {
+        println "Argument MUST be a directory, '${args[0]}' is not a valid directory."
+        return
+    }
+}
+
+println "Manny is scanning for jar files in $dir ..."
 dir.traverse(nameFilter: ~/.*\.jar/) {
     if (it.isFile()) {
+        jarCount ++
         def String jarFileName = it
         jarFileName = jarFileName.substring(jarFileName.lastIndexOf('/') + 1)
         println "***** $jarFileName *****"
-//        if (JarFile(it).manifest) {
+        JarFile jarFile = new JarFile(it)
+        if (jarFile.manifest?.mainAttributes?.entrySet()) {
+            Manifest manifest = jarFile.manifest
 
             new JarFile(it).manifest.mainAttributes.entrySet().each {
 //            print "checking '${it.key}' ..."
@@ -36,8 +53,12 @@ dir.traverse(nameFilter: ~/.*\.jar/) {
                 }
             }
             println "\n"
-//        } else {
-//            logger.error "NOT OSGi Compatible!"
-//        }
+        } else {
+           println "********** NO Manifest - NOT OSGi Compatible! **********\n"
+        }
     }
+
+    println "Checked Directory: $dir - found $jarCount jars"
 }
+
+
