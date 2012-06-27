@@ -44,37 +44,24 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-
-            <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>gmaven-plugin</artifactId>
-                <version>${maven.groovy.plugin}</version>
-                <executions>
-                    <execution>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>execute</goal>
-                        </goals>
-                        <configuration>
-                            <source>log.info("Running with OSGi '${osgi.version}'...")
-                                new java.util.jar.JarFile(args[0]).manifest.mainAttributes.entrySet().each {
-                                   println "${it.key}: ${it.value}"
-                                }
-
-                            </source>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-<!--
-new java.util.jar.JarFile(args[0]).manifest.mainAttributes.entrySet().each
-{
-   println "${it.key}: ${it.value}"
-}
-            -->
-        </plugins>
-    </build>
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.gmaven</groupId>-->
+                <!--<artifactId>gmaven-plugin</artifactId>-->
+                <!--<version>${maven.groovy.plugin}</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>execute</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<source>${parent.basedir}/scripts/MannyFest.groovy ${project.basedir}</source>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 </project>

@@ -15,7 +15,7 @@
 
     <modules>
         <module>greenpages.bundles</module>
-        <module>greenpages.test</module>
+        <!--<module>greenpages.test</module>-->
         <module>greenpages-assembly</module>
     </modules>
 
@@ -85,10 +85,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>

@@ -26,13 +26,16 @@
 		<pax.runner.version>1.7.6</pax.runner.version>
 		<pax.url.version>1.4.2</pax.url.version>
 		<slf4j.version>1.6.6</slf4j.version>
-		<spock.version>0.6-groovy-1.8</spock.version>
 	</properties>
 
 
 	<dependencies>
-		<!-- <dependency> <groupId>org.spockframework</groupId> <artifactId>spock-core</artifactId> 
-			<version>${spock.version}</version> <scope>test</scope> </dependency> -->
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>com.springsource.org.junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-atinject_1.0_spec</artifactId>
